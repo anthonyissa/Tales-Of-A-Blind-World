@@ -207,6 +207,10 @@ public class Controller implements Initializable {
        listenerLauncher.initStatsListener(statLevelLabel,statHPMAXLabel,joueur);
     }
 
+    public void animationManager(){
+        manageShurikenAnimation();
+    }
+
     // key initialisé aléatoirement pour éviter une erreur
     private static KeyEvent keyPressed = new KeyEvent(KeyEvent.KEY_PRESSED, "d", "D", KeyCode.Z,false, false, false, false);
     private Timeline gameLoop;
@@ -216,7 +220,7 @@ public class Controller implements Initializable {
         KeyFrame kf = new KeyFrame(
                 Duration.seconds(0.017),
                 (ev ->{
-                    manageShurikenAnimation();
+                    animationManager();
                     if(!(vendeurPane.isVisible()|| upgraderPane.isVisible())) // Si le joueur n'a pas de discussion en cours
                         movePlayer(); // gère le déplacement à chaque tour de la boucle temporelle
                     timeManager(); // gestion du temps
